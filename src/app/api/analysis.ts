@@ -1,28 +1,107 @@
-import { api } from '.';
-import { AnalysisResponse, ApiResponse, PlaceAnalysisResponse } from './type';
+import {
+  AnalysisResponse,
+  ApiResponse,
+  PlaceAnalysisResponse,
+} from './type';
+
+import {
+  MOCK_ANALYSIS_RESULT,
+  MOCK_PLACE_ID,
+  MOCK_PLACE_NAME,
+} from './mockAnalysis';
+
+const ANALYSIS_START_KEY = 'placeup_mock_analysis_started_at';
+
+function createResponse<T>(data: T): ApiResponse<T> {
+  return {
+    code: 200,
+    message: 'success',
+    data,
+  };
+}
 
 export const analysisApi = {
-  /**
-   * 1. POST /v1/place-analysis — 분석 트리거
-   * 네이버 플레이스 URL을 전송해 분석을 시작한다.
-   */
-  async triggerAnalysis(url: string) {
-    const response = await api.post<ApiResponse<PlaceAnalysisResponse>>('/v1/place-analysis', url, {
-      headers: { 'Content-Type': 'text/plain' },
-    });
+  async triggerAnalysis(
+    _url: string
+  ): Promise<ApiResponse<PlaceAnalysisResponse>> {
+    sessionStorage.setItem(
+      ANALYSIS_START_KEY,
+      String(Date.now())
+    );
 
-    return response.data;
+    // 버튼을 누르자마자 너무 즉시 넘어가는 느낌을 방지
+    await new Promise((resolve) =>
+      setTimeout(resolve, 250)
+    );
+
+    return createResponse({
+      naverPlaceId: MOCK_PLACE_ID,
+      placeName: MOCK_PLACE_NAME,
+      analyzing: true,
+    });
   },
 
-  /**
-   * 2. GET /v1/place-analysis — 분석 상태 폴링 + 결과 조회
-   * analyzing: true → 진행 중 / analyzing: false → 완료 (결과 포함)
-   */
-  async getAnalysisStatus(naverPlaceId: number) {
-    const response = await api.get<ApiResponse<AnalysisResponse>>('/v1/place-analysis', {
-      params: { naverPlaceId },
-    });
+  async getAnalysisStatus(
+    _naverPlaceId: number
+  ): Promise<ApiResponse<AnalysisResponse>> {
+    const startTime = Number(
+      sessionStorage.getItem(ANALYSIS_START_KEY) ??
+        Date.now()
+    );
 
-    return response.data;
+    const elapsed = Date.now() - startTime;
+
+    // 0 ~ 1.25초
+    if (elapsed < 1250) {
+      return createResponse({
+        ...MOCK_ANALYSIS_RESULT,
+        status: 'PLACE_CRAWLING',
+        analyzing: true,
+        keywords: [],
+        seo: null,
+        feedback: null,
+      });
+    }
+
+    // 1.25 ~ 2.5초
+    if (elapsed < 2500) {
+      return createResponse({
+        ...MOCK_ANALYSIS_RESULT,
+        status: 'REVIEW_CRAWLING',
+        analyzing: true,
+        keywords: [],
+        seo: null,
+        feedback: null,
+      });
+    }
+
+    // 2.5 ~ 3.75초
+    if (elapsed < 3750) {
+      return createResponse({
+        ...MOCK_ANALYSIS_RESULT,
+        status: 'KEYWORD_EXTRACTING',
+        analyzing: true,
+        keywords: [],
+        seo: null,
+        feedback: null,
+      });
+    }
+
+    // 3.75 ~ 5초
+    if (elapsed < 5000) {
+      return createResponse({
+        ...MOCK_ANALYSIS_RESULT,
+        status: 'RANKING_CRAWLING',
+        analyzing: true,
+        keywords: [],
+        seo: null,
+        feedback: null,
+      });
+    }
+
+    // 5초 이후 결과 반환
+    return createResponse(
+      MOCK_ANALYSIS_RESULT
+    );
   },
 };

@@ -1,0 +1,237 @@
+import { AnalysisResponse } from './type';
+
+export const MOCK_PLACE_ID = 32214643;
+export const MOCK_PLACE_NAME = '홍춘';
+
+export const MOCK_ANALYSIS_RESULT: AnalysisResponse = {
+  naverPlaceId: MOCK_PLACE_ID,
+  placeName: MOCK_PLACE_NAME,
+  status: 'COMPLETED',
+  analyzing: false,
+
+  keywords: [
+    {
+      keyword: '단국대 맛집',
+      score: 95,
+      monthlySearchVolume: 7200,
+      rankNo: 3,
+      competitionLevel: '높음',
+      isOpportunity: false,
+    },
+    {
+      keyword: '죽전 맛집',
+      score: 92,
+      monthlySearchVolume: 6800,
+      rankNo: 5,
+      competitionLevel: '높음',
+      isOpportunity: false,
+    },
+    {
+      keyword: '단국대 짬뽕',
+      score: 91,
+      monthlySearchVolume: 1900,
+      rankNo: 2,
+      competitionLevel: '중간',
+      isOpportunity: false,
+    },
+    {
+      keyword: '죽전 짬뽕',
+      score: 88,
+      monthlySearchVolume: 1700,
+      rankNo: 6,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '목화탕수육',
+      score: 87,
+      monthlySearchVolume: 1300,
+      rankNo: 4,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 중국집',
+      score: 86,
+      monthlySearchVolume: 1500,
+      rankNo: 5,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 중국집',
+      score: 84,
+      monthlySearchVolume: 2100,
+      rankNo: 9,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 점심',
+      score: 82,
+      monthlySearchVolume: 3400,
+      rankNo: 8,
+      competitionLevel: '높음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 혼밥',
+      score: 80,
+      monthlySearchVolume: 1200,
+      rankNo: 12,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 점심 맛집',
+      score: 79,
+      monthlySearchVolume: 1600,
+      rankNo: 10,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 탕수육',
+      score: 78,
+      monthlySearchVolume: 900,
+      rankNo: 7,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 탕수육',
+      score: 76,
+      monthlySearchVolume: 1100,
+      rankNo: 11,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 저녁',
+      score: 74,
+      monthlySearchVolume: 1800,
+      rankNo: 15,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 저녁 맛집',
+      score: 73,
+      monthlySearchVolume: 1700,
+      rankNo: 16,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 가성비 맛집',
+      score: 72,
+      monthlySearchVolume: 1400,
+      rankNo: 18,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 가성비 맛집',
+      score: 70,
+      monthlySearchVolume: 1300,
+      rankNo: 19,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 학생 맛집',
+      score: 69,
+      monthlySearchVolume: 900,
+      rankNo: 13,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 중식 맛집',
+      score: 68,
+      monthlySearchVolume: 1000,
+      rankNo: 14,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 중식',
+      score: 67,
+      monthlySearchVolume: 800,
+      rankNo: 9,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 짜장면',
+      score: 65,
+      monthlySearchVolume: 1500,
+      rankNo: 21,
+      competitionLevel: '중간',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 짜장면',
+      score: 64,
+      monthlySearchVolume: 950,
+      rankNo: 17,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 무료주차 맛집',
+      score: 63,
+      monthlySearchVolume: 700,
+      rankNo: 23,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '단국대 가족외식',
+      score: 61,
+      monthlySearchVolume: 500,
+      rankNo: null,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+    {
+      keyword: '죽전 가족외식',
+      score: 60,
+      monthlySearchVolume: 650,
+      rankNo: null,
+      competitionLevel: '낮음',
+      isOpportunity: true,
+    },
+  ],
+
+  seo: {
+    score: 86,
+    grade: '🟢 우수',
+    placeCompleteness: 37,
+    reviewQuality: 49,
+  },
+
+  feedback: {
+  summary:
+    '플레이스 정보, 고객 리뷰, 추천 키워드와 경쟁도 데이터를 종합하여 검색 노출을 높이기 위한 개선 방향을 분석했습니다.',
+
+  seoFeedback: [
+    '추천 키워드를 플레이스 소개글에 자연스럽게 반영하고, 메뉴와 매장 정보를 최신 상태로 유지하는 것을 권장합니다.',
+  ],
+
+  reviewFeedback: [
+    '리뷰에서 반복적으로 나타나는 긍정 키워드를 확인하고, 해당 강점이 지속적으로 드러날 수 있도록 리뷰를 관리하는 것을 권장합니다.',
+  ],
+
+  competitorFeedback: [
+    '경쟁도가 낮으면서 검색량이 높은 키워드를 우선 활용하면 효율적인 검색 노출을 기대할 수 있습니다.',
+  ],
+
+  placeSummary: {
+    대표메뉴: ['짬뽕', '목화탕수육', '짜장면', '중식'],
+    방문목적: ['점심식사', '저녁식사', '식사', '외식'],
+    분위기: ['깔끔한', '편안한', '쾌적한'],
+    특징: ['맛있는', '푸짐한', '친절한'],
+  },
+},
+}
